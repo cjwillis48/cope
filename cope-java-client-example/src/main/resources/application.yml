@@ -1,0 +1,30 @@
+cope:
+  mode: pubsub
+  restful-configuration:
+    server-url: http://localhost:8080
+    username: something
+    password: something-else
+  pubsub-configuration:
+    rabbit-url: jaguar.rmq.cloudamqp.com
+    username: bkglyvqr
+    password: xdL-64KGn4pBt46c_uwkZfXGMYsh9_-L
+    virtual-host: bkglyvqr
+  client:
+    client-id: 1234567
+    software-title: KASPER
+    localization-name: Kentucky
+    contact-address:
+      street: 1811 Somewhere Ct.
+      city: Louisville
+      state: Kentucky
+      zip-code: 47129
+    contact-phone: 502-555-5555
+    locality: state
+
+server:
+    port: 10010
+
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+

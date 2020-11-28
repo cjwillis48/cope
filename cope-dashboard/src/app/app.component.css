@@ -1,0 +1,22 @@
+nz-header {
+  position: fixed;
+  width: 100%;
+}
+
+nz-content {
+  padding: 0 0px;
+  margin-top: 64px;
+}
+
+nz-layout {
+  height: 100%;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.content {
+  background: #fff;
+  height: 100%;
+}

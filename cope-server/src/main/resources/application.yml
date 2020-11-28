@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432}/cope
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:pass}
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  rabbitmq:
+    host: jaguar.rmq.cloudamqp.com
+    username: bkglyvqr
+    password: xdL-64KGn4pBt46c_uwkZfXGMYsh9_-L
+    virtual-host: bkglyvqr
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
