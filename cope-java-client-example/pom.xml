@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>com.ihi.cope.examples</groupId>
-    <artifactId>spring-boot-client-example</artifactId>
+    <artifactId>cope-java-client-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cope-java-client-example</name>
     <description>Used to demonstrate how a Spring Boot client would be created for COPE</description>

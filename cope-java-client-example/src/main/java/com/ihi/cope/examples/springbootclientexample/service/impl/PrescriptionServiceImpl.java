@@ -20,30 +20,6 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         this.copeWriter = copeWriter;
     }
 
-    @PostConstruct
-    private void execute() {
-        var address = Address.builder()
-                .state(State.KENTUCKY)
-                .city("Louisville");
-
-        KentuckyPrescription kentuckyPrescription = KentuckyPrescription.builder()
-                .medicationName("Oxycodone")
-                .dose("10 mg")
-                .quantity(30)
-                .prescriptionDate(LocalDateTime.now())
-                .prescriberSsn("000-11-1111")
-                .prescriberName("Dr. Shivago")
-                .prescriberAddress(address.street("1234 Somewhere ave").build())
-                .patientSsn("000-11-1111")
-                .patientName("Timmy Turner")
-                .patientAddress(address.street("1211 Krypton Ct").build())
-                .pharmacyName("Walgreens")
-                .pharmacyAddress(address.street("1212 Krypton Ct").build())
-                .build();
-
-        publishPrescription(kentuckyPrescription);
-    }
-
     @Override
     public void publishPrescription(KentuckyPrescription kentuckyPrescription) {
 

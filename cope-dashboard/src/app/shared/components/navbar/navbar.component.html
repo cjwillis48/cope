@@ -2,13 +2,8 @@
   <div nz-col nzSpan="23">
     <ul id="menu" nz-menu nzTheme="dark" [nzMode]="'horizontal'">
       <li nz-menu-item><a [routerLink]="['/home']">Home</a></li>
-      <li nz-menu-item><a [routerLink]="['/education']">Education</a></li>
-      <li nz-menu-item *ngIf="isAuthenticated" ><a [routerLink]="['/tracking']">Tracking</a></li>
-      <li nz-menu-item *ngIf="isAuthenticated" ><a [routerLink]="['/questionnaire']">Questionnaire</a></li>
+      <li nz-menu-item><a [routerLink]="['/prescription']">Prescriptions</a></li>
+      <li nz-menu-item><a [routerLink]="['/acknowledgement']">Acknowledgements</a></li>
     </ul>
-  </div>
-  <div nz-col nzSpan="1">
-    <button nz-button *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect()">Login</button>
-    <button nz-button *ngIf="isAuthenticated" (click)="oktaAuth.logout()">Logout</button>
   </div>
 </div>

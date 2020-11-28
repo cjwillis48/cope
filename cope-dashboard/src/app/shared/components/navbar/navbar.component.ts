@@ -21,19 +21,10 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   @ViewChildren(NzMenuItemDirective)
   menuItems: QueryList<NzMenuItemDirective>;
 
-  isAuthenticated: boolean = false;
-
-  constructor(public oktaAuth: OktaAuthService, private router: Router) {
+  constructor(private router: Router) {
 
   }
   async ngOnInit() {
-    console.log(this.oktaAuth);
-    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
-    // Subscribe to authentication state changes
-    this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
-    );
-    console.log('authenticated' + this.isAuthenticated);
   }
 
 

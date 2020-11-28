@@ -1,11 +1,7 @@
-import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from "ng-zorro-antd/table";
+import { NzTableSortFn } from "ng-zorro-antd/table";
 
 export interface ColumnItem {
-  name: string;
-  sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn | null;
-  listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn | null;
-  filterMultiple: boolean;
-  sortDirections: NzTableSortOrder[];
+  title: string;
+  compare: NzTableSortFn;
+  priority: number;
 }

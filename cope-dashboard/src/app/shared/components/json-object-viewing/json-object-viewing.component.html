@@ -1,0 +1,9 @@
+<div>
+  <h2>{{ title }}</h2>
+  <h4 *ngIf="subtitle">{{ subtitle }}</h4>
+  <p>
+    {{ data | json }}
+  </p>
+  <button nz-button [nzType]="'primary'" (click)="close()">destroy modal in the component</button>
+
+</div>

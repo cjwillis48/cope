@@ -9,17 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { AcknowledgementModule } from './acknowledgement/acknowledgement.module';
-import {TrackingModule} from "./tracking/tracking.module";
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { en_US, NZ_I18N } from "ng-zorro-antd/i18n";
 import { NzLayoutModule } from "ng-zorro-antd/layout";
-import { ServiceTestComponent } from './temp/components/service-test/service-test.component';
-import { NzGridModule } from "ng-zorro-antd/grid";
-import {QuestionnaireModule} from "./questionnaire/questionnaire.module"
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { LoginCallbackComponent } from './shared/components/login-callback-component/login-callback.component';
-import { QuestionnaireComponent } from './questionnaire/components/questionnaire/questionnaire.component';
+import { JsonObjectViewingComponent } from './shared/components/json-object-viewing/json-object-viewing.component';
+
 
 registerLocaleData(en);
 
@@ -27,8 +22,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     NavbarComponent,
-    ServiceTestComponent,
-    LoginCallbackComponent
+    JsonObjectViewingComponent
   ],
   imports: [
     BrowserModule,
@@ -37,13 +31,9 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    TrackingModule,
     AcknowledgementModule,
-    QuestionnaireModule,
     NzMenuModule,
     NzLayoutModule,
-    NzGridModule,
-    NzButtonModule,
     HttpClientModule,
     // AuthRoutingModule
   ],

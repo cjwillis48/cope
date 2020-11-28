@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RequestMapping("/acknowledgement")
 @RestController
 public class AcknowledgementController {

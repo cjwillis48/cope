@@ -1,10 +1,10 @@
 {
-  "name": "african-american-women-childbirth-risk-app",
+  "name": "cope-dashboard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "node server/server.ts",
-    "build": "ng build --prod --deploy-url=/african-american-women-childbirth-risk-app/ --base-href=/african-american-women-childbirth-risk-app/",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

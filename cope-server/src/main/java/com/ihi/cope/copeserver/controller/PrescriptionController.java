@@ -19,7 +19,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
-@RequestMapping(value = "/prescription", method = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin
+@RequestMapping(value = "/prescription")
 @RestController
 @Validated
 public class PrescriptionController {
