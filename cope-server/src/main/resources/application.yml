@@ -1,8 +1,14 @@
 spring:
+  profiles:
+    active: local
+---
+
+spring:
+  profiles: heroku
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432}/cope
-    username: ${JDBC_DATABASE_USERNAME:postgres}
-    password: ${JDBC_DATABASE_PASSWORD:pass}
+    url: ${JDBC_DATABASE_URL}/cope
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   jpa:
     show-sql: false
     generate-ddl: true
@@ -14,6 +20,33 @@ spring:
     username: bkglyvqr
     password: xdL-64KGn4pBt46c_uwkZfXGMYsh9_-L
     virtual-host: bkglyvqr
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+
+---
+
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:h2:mem:cope
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  rabbitmq:
+    host: moose.rmq.cloudamqp.com
+    username: luxhmtsv
+    password: RMKvvLs7vKgp3JOLMgM5d2w4np5jQe1G
+    virtual-host: luxhmtsv
   jackson:
     serialization:
       write_dates_as_timestamps: false

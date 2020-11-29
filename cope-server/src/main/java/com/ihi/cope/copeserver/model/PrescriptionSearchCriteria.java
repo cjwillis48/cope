@@ -1,6 +1,7 @@
 package com.ihi.cope.copeserver.model;
 
 import com.ihi.cope.copeserver.entity.PrescriptionEntity;
+import lombok.Data;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.jpa.domain.Specification;
@@ -12,7 +13,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 
-@Setter
+@Data
 @ToString
 public class PrescriptionSearchCriteria implements Specification<PrescriptionEntity> {
     private String patientSsn;

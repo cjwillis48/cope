@@ -1,0 +1,21 @@
+<div>
+  <h4 *ngIf="subtitle">{{ subtitle }}</h4>
+  <nz-table #table [nzData]="getKeys()" nzTableLayout="auto" nzShowPagination="false">
+    <thead>
+    <tr>
+      <th id="key">Key</th>
+      <th id="value">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let key of table.data">
+      <td>{{keyToTitle(key)}}</td>
+      <td>
+        <ng-container *ngIf="isJson(data[key]); then jsonValue else standardValue"></ng-container>
+        <ng-template #jsonValue><button nz-button [nzType]="'primary'" (click)="showModal(key, data[key])"><span>Show {{keyToTitle(key)}}</span></button></ng-template>
+        <ng-template #standardValue>{{data[key]}}</ng-template>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

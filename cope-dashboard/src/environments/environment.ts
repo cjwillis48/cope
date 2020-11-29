@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceBaseUrl: 'http://localhost:9001',
-  redirectUri: window.location.origin + '/callback',
-  postLogoutRedirectUri: window.location.origin
+  serviceBaseUrl: 'http://localhost:8080',
 };
 
 /*

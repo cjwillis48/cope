@@ -1,0 +1,20 @@
+<div>
+  <nz-table #table [nzData]="data" nzTableLayout="auto" nzShowPagination="false">
+    <thead>
+    <tr>
+      <th id="field">Field</th>
+      <th id="value">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let parameter of table.data">
+      <td>{{keyToTitle(parameter.field)}}</td>
+      <td>
+        <ng-container *ngIf="isJson(parameter.value); then jsonValue else standardValue"></ng-container>
+        <ng-template #jsonValue><button nz-button [nzType]="'primary'" (click)="showModal(parameter.field, parameter.value)"><span>Show {{keyToTitle(parameter.field)}}</span></button></ng-template>
+        <ng-template #standardValue>{{parameter.value}}</ng-template>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

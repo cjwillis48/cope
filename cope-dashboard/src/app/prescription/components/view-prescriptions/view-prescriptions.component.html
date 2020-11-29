@@ -1,0 +1,48 @@
+<nz-table #sortTable [nzData]="data" [nzLoading]="!loaded" nzTableLayout="auto">
+  <thead>
+  <tr>
+    <th *ngFor="let column of columns" id="{{column.title}}}" [nzSortFn]="column.compare"
+        [nzSortPriority]="column.priority">{{ column.title }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of sortTable.data">
+    <td>
+      <button nz-button [nzType]="'primary'"
+              (click)="showObjectModal(data.patient.firstName + ' ' + data.patient.lastName, data.patient)">
+        <span>{{ data.patient.lastName }}, {{data.patient.firstName}}</span>
+      </button>
+    </td>
+    <td>
+      <button nz-button [nzType]="'primary'"
+              (click)="showObjectModal(data.prescriber.firstName + ' ' + data.prescriber.lastName, data.prescriber)">
+        <span>{{ data.prescriber.lastName }}, {{data.prescriber.firstName}}</span>
+      </button>
+    </td>
+    <td>
+      <button nz-button [nzType]="'primary'"
+              (click)="showObjectModal(data.pharmacy.name, data.pharmacy)">
+        <span>{{ data.pharmacy.name }}</span>
+      </button>
+    </td>
+    <td>{{ data.drugName }}</td>
+    <td>{{ data.quantity }}</td>
+    <td>{{ data.dose }} {{data.dosageMeasurement}}</td>
+    <td>
+      <button nz-button [nzType]="'primary'"
+              (click)="showObjectModal(data.client.softwareTitle, data.client)">
+        <span>{{ data.client.softwareTitle }}</span>
+      </button>
+    </td>
+    <td>{{ data.prescriptionDate | date: 'yyyy/MM/dd' }}</td>
+
+    <td>
+      <button nz-button [nzType]="'primary'"
+              (click)="showObjectModal('Instructions', { instructions: data.instructions })">
+        <span>Instructions</span>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+

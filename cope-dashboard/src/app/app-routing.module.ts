@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'prescription',
-    loadChildren: () => import('./prescription/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./prescription/prescription.module').then(m => m.PrescriptionModule)
   },
   {
     path: '**',

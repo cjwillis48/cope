@@ -13,5 +13,5 @@ export interface Acknowledgement {
 
 export interface Parameter {
   field: string;
-  value: string;
+  value: any;
 }

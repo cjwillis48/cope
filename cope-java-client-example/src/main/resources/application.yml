@@ -5,10 +5,10 @@ cope:
     username: something
     password: something-else
   pubsub-configuration:
-    rabbit-url: jaguar.rmq.cloudamqp.com
-    username: bkglyvqr
-    password: xdL-64KGn4pBt46c_uwkZfXGMYsh9_-L
-    virtual-host: bkglyvqr
+    rabbit-url: moose.rmq.cloudamqp.com
+    username: luxhmtsv
+    password: RMKvvLs7vKgp3JOLMgM5d2w4np5jQe1G
+    virtual-host: luxhmtsv
   client:
     client-id: 1234567
     software-title: KASPER

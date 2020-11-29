@@ -13,8 +13,10 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { en_US, NZ_I18N } from "ng-zorro-antd/i18n";
 import { NzLayoutModule } from "ng-zorro-antd/layout";
-import { JsonObjectViewingComponent } from './shared/components/json-object-viewing/json-object-viewing.component';
-
+import { ObjectViewerModal } from './shared/components/object-viewer-modal/object-viewer-modal.component';
+import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzModalModule } from "ng-zorro-antd/modal";
+import { NzTableModule } from "ng-zorro-antd/table";
 
 registerLocaleData(en);
 
@@ -22,7 +24,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     NavbarComponent,
-    JsonObjectViewingComponent
+    ObjectViewerModal
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,9 @@ registerLocaleData(en);
     NzMenuModule,
     NzLayoutModule,
     HttpClientModule,
-    // AuthRoutingModule
+    NzButtonModule,
+    NzModalModule,
+    NzTableModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

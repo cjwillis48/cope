@@ -1,7 +1,7 @@
 <nz-table #sortTable [nzData]="data" [nzLoading]="!loaded" nzTableLayout="auto">
   <thead>
   <tr>
-    <th *ngFor="let column of columns" [nzSortFn]="column.compare"
+    <th *ngFor="let column of columns" id="{{column.title}}}" [nzSortFn]="column.compare"
         [nzSortPriority]="column.priority">{{ column.title }}</th>
   </tr>
   </thead>
@@ -10,7 +10,16 @@
     <td>{{ data.uuid }}</td>
     <td>{{ data.operation }}</td>
     <td>{{ data.success }}</td>
-    <button nz-button [nzType]="'primary'" (click)="showOutputModal(data.output)"><span>Show Modal</span></button>
+    <td>
+      <button nz-button [nzType]="'primary'" (click)="showInputModal(data.input)"><span>Show Input</span></button>
+    </td>
+    <td>
+      <button nz-button [nzType]="'primary'" (click)="showOutputModal(data.output)"><span>Show Output</span></button>
+    </td>
+    <td>
+      <button nz-button [nzType]="'primary'" (click)="showClientModal(data.client)"><span>Show Client</span></button>
+    </td>
+    <td>{{ data.startTime }}</td>
     <td>{{ data.completeTime }}</td>
   </tr>
   </tbody>

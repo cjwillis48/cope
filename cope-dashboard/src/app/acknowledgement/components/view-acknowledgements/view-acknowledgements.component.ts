@@ -1,9 +1,11 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ColumnItem} from "../../../shared/interfaces/column-item.interface";
-import {Acknowledgement} from "../../interfaces/acknowledgement.interface";
+import { Acknowledgement, Parameter } from "../../interfaces/acknowledgement.interface";
 import {AcknowledgementService} from "../../services/acknowledgement.service";
 import {NzModalService} from "ng-zorro-antd/modal";
-import {JsonObjectViewingComponent} from "../../../shared/components/json-object-viewing/json-object-viewing.component";
+import {ObjectViewerModal} from "../../../shared/components/object-viewer-modal/object-viewer-modal.component";
+import { Client } from "../../../shared/interfaces/client.interface";
+import { ParameterViewerComponent } from "../parameter-viewer/parameter-viewer.component";
 
 @Component({
   selector: 'app-complications',
@@ -68,31 +70,40 @@ export class ViewAcknowledgementsComponent implements OnInit {
     this.acknowledgementService.getAcknowledgements().subscribe(res => {
       this.loaded = true;
       this.data = res;
-      console.log(res);
-    })
+    });
   }
 
   showOutputModal(output: string) {
-    const modal = this.modalService.create({
+    this.modalService.create({
       nzTitle: 'Output',
-      nzContent: JsonObjectViewingComponent,
+      nzContent: ObjectViewerModal,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
-        title: 'title in component',
-        subtitle: 'component sub title，will be changed after 2 sec',
-        data: output
-      },
-      nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+        data: JSON.parse(output)
+      }
     });
-    // const instance = modal.getContentComponent();
-    // modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
-    // // Return a result when closed
-    // modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
-    //
-    // // delay until modal instance created
-    // setTimeout(() => {
-    //   instance.subtitle = 'sub title is changed';
-    // }, 2000);
+  }
+
+  showInputModal(input: Parameter[]) {
+    this.modalService.create( {
+      nzTitle: 'Input',
+      nzContent: ParameterViewerComponent,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        data: input
+      }
+    })
+  }
+
+  showClientModal(client: Client) {
+    this.modalService.create({
+      nzTitle: 'Client',
+      nzContent: ObjectViewerModal,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        data: client
+      }
+    });
   }
 
 }

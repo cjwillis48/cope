@@ -1,5 +1,6 @@
 package com.ihi.cope.copeserver.service.impl;
 
+import com.ihi.cope.copeserver.entity.AcknowledgementEntity;
 import com.ihi.cope.copeserver.entity.PrescriptionEntity;
 import com.ihi.cope.copeserver.mappers.Mapper;
 import com.ihi.cope.copeserver.model.PrescriptionSearchCriteria;
@@ -10,9 +11,11 @@ import com.ihi.cope.domain.Parameter;
 import com.ihi.cope.domain.Prescription;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,6 +81,22 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     public List<Prescription> getPrescriptionsForSearchCriteria(PrescriptionSearchCriteria searchCriteria) {
+        if (StringUtils.isEmpty(searchCriteria.getPatientSsn()) &&
+                StringUtils.isEmpty(searchCriteria.getPrescriberSsn()) &&
+                StringUtils.isEmpty(searchCriteria.getClientId()) &&
+                StringUtils.isEmpty(searchCriteria.getDrugName()) &&
+                searchCriteria.getStartDate() == null &&
+                searchCriteria.getEndDate() == null) {
+            List<PrescriptionEntity> entities = new ArrayList<>();
+            prescriptionRepository.findAll().forEach(entities::add);
+            return entities
+                    .stream()
+                    .map(prescriptionMapper::entityToModel)
+                    .collect(Collectors.toList());
+        }
+
+
+
         return prescriptionRepository.findAll(searchCriteria)
                 .stream()
                 .map(prescriptionMapper::entityToModel)
