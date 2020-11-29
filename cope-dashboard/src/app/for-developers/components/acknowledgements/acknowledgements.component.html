@@ -1,0 +1,31 @@
+<h1>Acknowledgements</h1>
+<h2>Philosophy</h2>
+<p>During the conception of COPE, the decision was made to create a concept of an "Acknowledgement".  You can think of this
+almost like an audit.  You are able to browse acknowledgements to see
+<ul>
+  <li>What input COPE received</li>
+  <li>What operation COPE did with the input</li>
+  <li>The result COPE came up with based on operation on the provided input</li>
+  <li>The client that submitted the request</li>
+  <li>The time COPE started to work the request</li>
+  <li>The time COPE completed working on the request</li>
+</ul>
+
+<p>Acknowledgements are automatically stored into the COPE database when a request is processed</p>
+
+<h2>UUID</h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">Universally unique identifier</a> (UUID)
+is provided to a client during each request.  This UUID can be used by the support team of the PDMP or the COPE support team in
+order to investigate a failure to perform an operation</p>
+
+<h2>Types</h2>
+<p>Parameter values and outputs in an acknowledgement have values of anonymous types, this makes them universally applicable for any operation a client may perform.
+The acknowledgement provides these values in JSON format so that your application is able to serialize and understand</p>
+
+<h2>Acknowledgement Viewer</h2>
+<p>In case it wasn't easily noticeable, there is an acknowledgement viewer in this very dashboard! Just click "Acknowledgements"
+in the navigation bar to see acknowledgements that COPE has made</p>
+
+<h2>Interface control document</h2>
+An acknowledgement will be in the following format
+<pre><code [highlight]="getAcknowledgementSample()"></code></pre>

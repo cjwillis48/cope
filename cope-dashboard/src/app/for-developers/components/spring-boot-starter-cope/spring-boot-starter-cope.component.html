@@ -1,0 +1,35 @@
+<h1>Spring Boot Starter</h1>
+<p>A decision since the inception of COPE was that we would work hard to provide clients with client libraries to make
+onboarding to COPE as seamless as possible.  spring-boot-starter-cope is our first client library and works seamlessly and easily
+with clients using Spring Boot</p>
+
+<h2>Installation</h2>
+Installation is as easy as adding the maven dependency to your pom.xml file
+<pre><code [highlight]="getMavenDependencyCode()"></code></pre>
+
+<h2>Configuration</h2>
+Configuration is also easy.  Merely provide your client information, specify your mode and configure your chosen mode with connection information
+Note: you only need to include the configuration for whichever mode you want to use, changing the value for 'mode' to 'restful' in the
+sample below will enable synchronous requests using REST.
+<pre><code [highlight]="getConfigCode()"></code></pre>
+
+<h2>Saving a Prescription</h2>
+<h3>Using the domain</h3>
+<p>Spring boot starter cope exposes the domain classes of COPE to the client, all of which have builders, getters, setters, and default constructors.</p>
+
+<p>The builders are created for your application to easily build COPE prescription models from your existing data models</p>
+
+<p>For example, assume your application uses the following data model for a prescription
+<pre><code [highlight]="getSamplePojo()"></code></pre>
+
+<p>To map this code to a COPE Prescription you could create the following method using the COPE domain builders to transform your application's
+prescription model into a COPE prescription model:
+<pre><code [highlight]="getBuilderExample()"></code></pre>
+
+<h3>Publishing the prescription</h3>
+<p>At this point you have done the hardest part of writing prescriptions to COPE!</p>
+
+<p>All that is left is to use dependency injection to get an instance of a CopeWriter object (we create that for you based on the mode you have chosen in your configuration)
+  and then call the method to write the prescription!</p>
+
+<pre><code [highlight]="getServiceExample()"></code></pre>

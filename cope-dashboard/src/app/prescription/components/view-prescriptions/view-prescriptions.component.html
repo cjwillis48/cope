@@ -9,19 +9,19 @@
   <tr *ngFor="let data of sortTable.data">
     <td>
       <button nz-button [nzType]="'primary'"
-              (click)="showObjectModal(data.patient.firstName + ' ' + data.patient.lastName, data.patient)">
+              (click)="showObjectModal(data.patient.firstName + ' ' + data.patient.lastName,'address', data.patient)">
         <span>{{ data.patient.lastName }}, {{data.patient.firstName}}</span>
       </button>
     </td>
     <td>
       <button nz-button [nzType]="'primary'"
-              (click)="showObjectModal(data.prescriber.firstName + ' ' + data.prescriber.lastName, data.prescriber)">
+              (click)="showObjectModal(data.prescriber.firstName + ' ' + data.prescriber.lastName, 'address', data.prescriber)">
         <span>{{ data.prescriber.lastName }}, {{data.prescriber.firstName}}</span>
       </button>
     </td>
     <td>
       <button nz-button [nzType]="'primary'"
-              (click)="showObjectModal(data.pharmacy.name, data.pharmacy)">
+              (click)="showObjectModal(data.pharmacy.name, 'address', data.pharmacy)">
         <span>{{ data.pharmacy.name }}</span>
       </button>
     </td>
@@ -30,7 +30,7 @@
     <td>{{ data.dose }} {{data.dosageMeasurement}}</td>
     <td>
       <button nz-button [nzType]="'primary'"
-              (click)="showObjectModal(data.client.softwareTitle, data.client)">
+              (click)="showObjectModal(data.client.softwareTitle, 'contactAddress', data.client)">
         <span>{{ data.client.softwareTitle }}</span>
       </button>
     </td>
@@ -38,7 +38,7 @@
 
     <td>
       <button nz-button [nzType]="'primary'"
-              (click)="showObjectModal('Instructions', { instructions: data.instructions })">
+              (click)="showInstructionsModal(data.instructions)">
         <span>Instructions</span>
       </button>
     </td>

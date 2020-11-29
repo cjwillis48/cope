@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serviceBaseUrl: 'http://localhost:8080',
+  serviceBaseUrl: 'https://ihi-cope.herokuapp.com',
+  // serviceBaseUrl: 'http://localhost:8080',
 };
 
 /*

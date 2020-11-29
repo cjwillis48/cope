@@ -15,12 +15,14 @@ export interface Prescription {
 }
 
 export interface Prescriber {
+  ssn: string
   firstName: string;
   lastName: string;
   address: Address;
 }
 
 export interface Patient {
+  ssn: string
   firstName: string;
   lastName: string;
   address: Address;

@@ -1,7 +1,7 @@
 package com.ihi.cope.examples.springbootclientexample.service;
 
-import com.ihi.cope.examples.springbootclientexample.kaspermodels.KentuckyPrescription;
+import com.ihi.cope.examples.springbootclientexample.kaspermodels.MyPdmpPrescription;
 
 public interface PrescriptionService {
-    void publishPrescription(KentuckyPrescription kentuckyPrescription);
+    void publishPrescription(MyPdmpPrescription myPdmpPrescription);
 }

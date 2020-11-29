@@ -29,6 +29,10 @@ public abstract class CopeWriter {
         this.client = copeServerConfiguration.getClient();
     }
 
+    public Acknowledgement publishPrescription(Prescription prescription) {
+        return publishPrescription(() -> prescription);
+    }
+
     public Acknowledgement publishPrescription(Supplier<Prescription> prescriptionSupplier) {
         Acknowledgement acknowledgement = new Acknowledgement();
         String uuid = UUID.randomUUID().toString();

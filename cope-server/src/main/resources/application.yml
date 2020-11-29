@@ -5,10 +5,6 @@ spring:
 
 spring:
   profiles: heroku
-  datasource:
-    url: ${JDBC_DATABASE_URL}/cope
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
   jpa:
     show-sql: false
     generate-ddl: true
@@ -24,6 +20,8 @@ spring:
     serialization:
       write_dates_as_timestamps: false
 
+server:
+  port: ${PORT:8080}
 ---
 
 spring:

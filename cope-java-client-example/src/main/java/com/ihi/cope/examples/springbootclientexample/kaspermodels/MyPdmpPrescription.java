@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class KentuckyPrescription {
+public class MyPdmpPrescription {
     // Medication Info
     private String medicationName;
     private String dose;

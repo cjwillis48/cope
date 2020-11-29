@@ -1,0 +1,12 @@
+<h1>Prescription Reporting</h1>
+<h2>Methodologies</h2>
+<p>Prescriptions may be added in a synchronous method to COPE using RESTful communication using a POST call to the
+  endpoint '/prescription' with a valid request body. Requests made this way will be responded to with an acknowledgement
+  (see "Acknowledgements") containing the prescription that COPE stored based on the input.</p>
+<p>Prescriptions may be added in an asynchronous method to COPE using AMQP communication by placing a valid request body
+on the queue 'cope.inbound.prescription'.  Using a COPE client library, the application will receive an acknowledgement at publish time
+containing the UUID of the message which can be found in the COPE dashboard to investigate missing prescriptions</p>
+<h2>Interface control document</h2>
+<p>A request to insert a prescription in COPE should be a JSON document matching the following format:
+  *Note that using an official COPE client (such as spring-boot-starter-cope) will handle adding the client to the request body for you</p>
+<pre><code [highlight]="getPrescriptionSample()"></code></pre>

@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./prescription/prescription.module').then(m => m.PrescriptionModule)
   },
   {
+    path: 'for-developers',
+    loadChildren: () => import('./for-developers/for-developers.module').then(m => m.ForDevelopersModule)
+  },
+  {
     path: '**',
     redirectTo: '/home'
   }

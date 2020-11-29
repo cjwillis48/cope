@@ -7,5 +7,5 @@ import { OktaAuthService } from '@okta/okta-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'african-american-women-childbirth-risk-app';
+  title = 'Cope Dashboard';
 }

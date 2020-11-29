@@ -1,0 +1,67 @@
+<h1>Architecture</h1>
+<h2>Philosophy</h2>
+
+<p>The philosophy COPE uses for its architecture is that every PDMP should be able to onboard as easily as possible.</p>
+
+<p>While COPE maintains a strict <a href="https://en.wikipedia.org/wiki/Interface_control_document" target="_blank">Interface
+  Control Document</a>,
+  as long as your application can tell COPE how to transform your data into COPE data, COPE will accept your data.</p>
+
+<p> The end game of COPE will provide libraries for multiple technologies to easily interface with COPE. For now, COPE
+  provides
+  a library for PDMP's written in Spring Boot, spring-boot-starter-cope (see documentation on left).
+</p>
+
+<h2>Technologies Used</h2>
+<p>COPE uses the following tech stack:
+<ul>
+  <li>Java/Spring Boot - Back end services</li>
+  <li>Angular/NodeJS/Express - Dashboard front end</li>
+  <li>PostgreSQL - Database</li>
+  <li>RabbitMQ - Asynchronous communication</li>
+</ul>
+
+<h2>Synchronous vs. Asynchronous</h2>
+<p>COPE provides both synchronous (using <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a>)
+  and asynchronous (using <a href="https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol" target="_blank">AMQP</a>) methods to
+  communicate from your application</p>
+<p>You may be wondering "which is right for me?" COPE can help you decide.
+
+<h4>You may want to communicate synchronously if:</h4>
+<ul>
+  <li>Your application immediately cares about the status of COPE processing your requests</li>
+  <li>Your application has business logic based on the acknowledgement returned to you from COPE</li>
+  <li>Your application cannot resume processing a prescription until COPE does</li>
+  <li>Your application needs to run certain triggers after COPE has processed your requests</li>
+  <li>It is acceptable that your applications requests will fail when COPE is unavailable for planned or unplanned
+    outages
+  </li>
+  <li>Your organization requires a strict firewall exemption to communicate to COPE, for example using a <a
+    href="https://en.wikipedia.org/wiki/DMZ_(computing)" target="_blank">DMZ</a></li>
+</ul>
+
+<h4>You may want to communicate asynchronously if:</h4>
+<ul>
+  <li>Your application is not concerned with when or how COPE processes your request, only that COPE receives the
+    request
+  </li>
+  <li>It is important that COPE always receives your request, regardless of planned or unplanned outages</li>
+  <li>Your application is focused on making as few modifications as possible, leaving all existing functionality in
+    tact, and adding minimal business logic
+  </li>
+</ul>
+
+<p>At COPE, we suggest your application to use asynchronous communication. Our reasonings:
+<ol>
+  <li>We have chosen highly available and fault tolerant solutions to collect all asynchronous requests in the event of a COPE outage.
+    Upon service restoration COPE will reprocess all missed requests during the service failure.
+  </li>
+  <li>It more easily allows your application to make as few modifications as possible, which is particularly important
+    if a government agency is dictating your PDMP
+  </li>
+  <li>COPE provides an acknowledgement UUID when your application asynchronously sends a request.  Your support team can use that UUID
+    to find information about how or when COPE acknowledged your requests</li>
+</ol>
+
+<h2>Architecture diagram</h2>
+<img style="max-height: 50em" alt="hospital" src="assets/cope-architecture.png"/>

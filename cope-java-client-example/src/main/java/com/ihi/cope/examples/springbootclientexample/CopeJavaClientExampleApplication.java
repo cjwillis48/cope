@@ -2,9 +2,8 @@ package com.ihi.cope.examples.springbootclientexample;
 
 import com.ihi.cope.domain.Address;
 import com.ihi.cope.domain.State;
-import com.ihi.cope.examples.springbootclientexample.kaspermodels.KentuckyPrescription;
+import com.ihi.cope.examples.springbootclientexample.kaspermodels.MyPdmpPrescription;
 import com.ihi.cope.examples.springbootclientexample.service.PrescriptionService;
-import lombok.var;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -28,9 +27,10 @@ public class CopeJavaClientExampleApplication {
     private void feedData() {
         Address.AddressBuilder addressBuilder = Address.builder()
                 .state(State.KENTUCKY)
-                .city("Louisville");
+                .city("Louisville")
+                .zipCode("47129");
 
-        KentuckyPrescription kentuckyPrescription = KentuckyPrescription.builder()
+        MyPdmpPrescription myPdmpPrescription = MyPdmpPrescription.builder()
                 .medicationName("Oxycodone")
                 .dose("10 mg")
                 .quantity(30)
@@ -45,7 +45,7 @@ public class CopeJavaClientExampleApplication {
                 .pharmacyAddress(addressBuilder.street("1212 Anywhere Dr").build())
                 .build();
 
-        prescriptionService.publishPrescription(kentuckyPrescription);
+        prescriptionService.publishPrescription(myPdmpPrescription);
     }
 
 }
