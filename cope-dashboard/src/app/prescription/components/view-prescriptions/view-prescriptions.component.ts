@@ -53,14 +53,23 @@ export class ViewPrescriptionsComponent implements OnInit {
     },
     {
       title: 'Prescription Date',
-      compare: (a: Prescription, b: Prescription) => a.prescriptionDate.getTime() - b.prescriptionDate.getTime(),
+      compare: (a: Prescription, b: Prescription) => new Date(a.prescriptionDate).getTime() - new Date(b.prescriptionDate).getTime(),
       priority: 1
-    }, {
-      title: 'Instructions',
-      compare: (a: Prescription, b: Prescription) => a.instructions.localeCompare(b.instructions),
-      priority: 9
     },
-
+    {
+      title: 'Instructions',
+      compare: (a: Prescription, b: Prescription) => {
+        if (a.instructions == null && b.instructions == null) {
+          return 0;
+        } else if (a.instructions == null) {
+          return 1;
+        } else if (b.instructions == null) {
+          return -1;
+        }
+        return a.instructions.localeCompare(b.instructions);
+      },
+      priority: 9
+    }
   ];
 
   constructor(
@@ -69,29 +78,51 @@ export class ViewPrescriptionsComponent implements OnInit {
     private viewContainerRef: ViewContainerRef) {
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.prescriptionService.getPrescriptions().subscribe(res => {
       this.loaded = true;
       this.data = res;
     });
   }
 
-  flattenAddressIntoObject(object: any, key: string): any {
+  flattenAddressIntoObject(object
+                             :
+                             any, key
+                             :
+                             string
+  ):
+    any {
     if (!key) {
       return object;
     }
     console.log(object);
     console.log(key);
     const newObj = { ...object };
-    newObj['Street'] = _.startCase(object[key].street.toLowerCase());
-    newObj['City'] = _.startCase(object[key].city.toLowerCase());
-    newObj['State'] = _.startCase(object[key].state.toLowerCase());
-    newObj['Zip Code'] = _.startCase(object[key].zipCode.toLowerCase());
+    newObj['Street'] = this.formatIfProvided(object[key].street);
+    newObj['City'] = this.formatIfProvided(object[key].city);
+    newObj['State'] = this.formatIfProvided(object[key].state);
+    newObj['Zip Code'] = this.formatIfProvided(object[key].zipCode);
     delete newObj[key];
     return newObj;
   }
 
-  showInstructionsModal(instructions: string) {
+  formatIfProvided(value
+                     :
+                     string
+  ):
+    string {
+    if (!value) {
+      return 'Not Provided';
+    }
+    return _.startCase(value.toLowerCase());
+  }
+
+  showInstructionsModal(instructions
+                          :
+                          string
+  ) {
     this.modalService.create({
       nzTitle: 'Instructions',
       nzContent: instructions || 'N/A',
@@ -99,7 +130,14 @@ export class ViewPrescriptionsComponent implements OnInit {
     });
   }
 
-  showObjectModal(label: string, addressKey: string, object: Patient | Prescriber | Pharmacy | Client) {
+  showObjectModal(label
+                    :
+                    string, addressKey
+                    :
+                    string, object
+                    :
+                    Patient | Prescriber | Pharmacy | Client
+  ) {
     this.modalService.create({
       nzTitle: label,
       nzContent: ObjectViewerModal,

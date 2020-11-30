@@ -48,12 +48,12 @@ export class ViewAcknowledgementsComponent implements OnInit {
     },
     {
       title: 'Start Time',
-      compare: (a: Acknowledgement, b: Acknowledgement) => a.startTime.getTime() - b.startTime.getTime(),
+      compare: (a: Acknowledgement, b: Acknowledgement) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime(),
       priority: 2
     },
     {
       title: 'Complete Time',
-      compare: (a: Acknowledgement, b: Acknowledgement) => a.completeTime.getTime() - b.completeTime.getTime(),
+      compare: (a: Acknowledgement, b: Acknowledgement) => new Date(a.completeTime).getTime() - new Date(b.completeTime).getTime(),
       priority: 1
     },
   ];
